@@ -19,16 +19,13 @@ public with sharing class ArticleController {
         try {
             AppArticle__c newArticle = new AppArticle__c();
             
-            // Map fields explicitly
+            // Map fields 
             newArticle.Title__c = (String)article.get('Title__c');
             newArticle.Content__c = (String)article.get('Content__c');
             newArticle.Category__c = (String)article.get('Category__c');
             newArticle.Email__c = (String)article.get('Email__c');
             newArticle.Username__c = (String)article.get('Username__c');
             newArticle.Name = (String)article.get('Name');
-            
-            // Set any required fields
-            // newArticle.SomeRequiredField__c = 'Default Value';
             
             insert newArticle;
             return newArticle.Id;

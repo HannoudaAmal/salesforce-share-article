@@ -1,0 +1,63 @@
+<template>
+    <lightning-card title="コミュニティ記事" icon-name="standard:article">
+        <div class="slds-p-around_medium">
+            <!-- Category Filter -->
+            <div class="slds-m-bottom_medium">
+                <lightning-combobox
+                    name="category"
+                    label="カテゴリーでフィルター"
+                    value={selectedCategory}
+                    placeholder="Select a category"
+                    options={categoryOptions}
+                    onchange={handleCategoryChange}>
+                </lightning-combobox>
+            </div>
+
+            <!-- Articles Table -->
+            <template if:true={articles.data}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={articles.data}
+                    columns={columns}
+                    onrowaction={handleRowAction}
+                    hide-checkbox-column>
+                </lightning-datatable>
+            </template>
+            <template if:true={articles.error}>
+                <div class="slds-text-color_error">
+                    Error loading articles: {articles.error}
+                </div>
+            </template>
+        </div>
+
+        <!-- Article Detail Modal -->
+        <template if:true={showModal}>
+            <div class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                        <h2 class="slds-text-heading_medium">{selectedArticle.Title__c}</h2>
+                        <button class="slds-button slds-button_icon slds-modal__close" onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+                            <span class="slds-assistive-text">閉じる</span>
+                        </button>
+                    </div>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <div class="slds-text-body_regular">
+                            <p><strong>投稿者:</strong> {selectedArticle.Username__c}</p>
+                            <p><strong>カテゴリー:</strong> {selectedArticle.Category__c}</p>
+                            <p><strong>投稿日:</strong> {formattedDate}</p>
+                            <lightning-formatted-rich-text value={selectedArticle.Content__c} class="slds-m-top_medium slds-rich-text-editor__output"></lightning-formatted-rich-text>
+                            <!--<div class="slds-m-top_medium slds-rich-text-editor__output">
+                                {selectedArticle.Content__c}
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={closeModal}>閉じる</button>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    </lightning-card>
+</template>

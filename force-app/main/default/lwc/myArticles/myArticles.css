@@ -1,0 +1,101 @@
+:host {
+    display: block;
+    background-color: #f0f2f5; /* Soft site background */
+    font-family: 'Salesforce Sans', sans-serif;
+    padding: 1rem;
+}
+
+/* Card Styling */
+.slds-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: none;
+}
+
+/* Header with site-matching dark gradient */
+.slds-card__header {
+    background: linear-gradient(90deg, #003366, #005eb8);
+    color: white;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    padding: 1rem;
+    align-items: center;
+}
+
+.slds-card__header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* Lightning button adjustments */
+lightning-button {
+    --slds-c-button-brand-color-background: #005eb8;
+    --slds-c-button-brand-color-background-hover: #004a99;
+    --slds-c-button-text-color: #ffffff;
+    font-weight: bold;
+}
+
+/* Combobox full-width */
+lightning-combobox {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+/* Article List Styling */
+ul.slds-list_dotted {
+    margin-top: 1rem;
+    padding-left: 1.25rem;
+}
+
+ul li a {
+    color: #005eb8;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+ul li a:hover {
+    color: #002d72;
+    text-decoration: underline;
+}
+
+/* Success message styling */
+.slds-theme_success {
+    background-color: #2e8540;
+    color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+/* Headings inside form */
+h2.slds-text-heading_medium {
+    color: #003366;
+    margin-bottom: 1rem;
+}
+
+/* Form fields spacing */
+lightning-input,
+lightning-textarea,
+lightning-combobox {
+    margin-bottom: 1rem;
+}
+
+/* button spacing */
+.slds-grid lightning-button.slds-m-left_small {
+    margin-top: 0;
+    margin-left: 0.75rem;
+}
+
+
+/* Make textarea flexible height */
+.content-textarea {
+    --lwc-height-textarea: 15rem !important;
+    resize: vertical !important;
+    height: auto !important; 
+}
+textarea {
+    min-height: 15rem !important;
+}

@@ -1,0 +1,27 @@
+/* homeIntro.css */
+.intro-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.intro-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.center-container {
+    width: 80%; /* or any fixed width like 600px */
+    margin: 0 auto;
+  }
+
+div {
+    background-color: rgb(203, 232, 243);
+    width: 70%;
+    border: 15px solid rgb(235, 179, 133);
+    padding: 50px;
+    margin: 20px;
+    align-items: center;
+    text-align: center;
+    font-size: 60%;
+  }

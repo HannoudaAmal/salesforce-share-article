@@ -1,0 +1,108 @@
+<template>
+    <div class="slds-card">
+        <!-- Header -->
+        <div class="slds-card__header slds-grid slds-grid_align-spread slds-p-around_small">
+            <h2 class="slds-text-heading_small slds-truncate">マイ記事</h2>
+            <lightning-button label="新規記事" onclick={handleCreateNew}></lightning-button>
+        </div>
+
+        <!-- Body -->
+        <div class="slds-card__body slds-card__body_inner">
+            <div class="slds-grid slds-wrap">
+                <!-- Left Column -->
+                <div class="slds-size_1-of-2 slds-p-around_small">
+                    <lightning-combobox
+                        label="カテゴリーでフィルター"
+                        placeholder="すべて"
+                        value={selectedCategory}
+                        options={categoryOptions}
+                        onchange={handleCategoryChange}>
+                    </lightning-combobox>
+
+                    <template if:true={filteredArticles}>
+                        <ul class="slds-list_dotted slds-m-top_small">
+                            <template for:each={filteredArticles} for:item="article">
+                                <li key={article.Id} class="slds-p-vertical_x-small">
+                                    <a href="javascript:void(0);" onclick={handleTitleClick} data-id={article.Id}>
+                                        {article.Title__c}
+                                    </a>
+                                </li>
+                            </template>
+                        </ul>
+                    </template>
+                </div>
+
+                <!-- Right Column -->
+                <div class="slds-size_1-of-2 slds-p-around_small">
+                    <template if:true={isCreatingNew}>
+                        <!-- New Article Form -->
+                        <h2 class="slds-text-heading_medium">新規記事を作成</h2>
+                        <lightning-combobox
+                            label="カテゴリー"
+                            value={newArticle.Category__c}
+                            options={categoryOptions}
+                            onchange={handleNewCategoryChange}>
+                        </lightning-combobox>
+                        <lightning-input
+                            label="タイトル"
+                            value={newArticle.Title__c}
+                            onchange={handleNewTitleChange}>
+                        </lightning-input>
+                        <lightning-textarea
+                            label="内容"
+                            value={newArticle.Content__c}
+                            onchange={handleNewContentChange}
+                            class="content-textarea"
+                            rows="10" >
+                        </lightning-textarea>
+                        <lightning-button variant="brand" label="保存" onclick={handleSaveNewArticle}></lightning-button>
+                    </template>
+
+                    <template if:true={selectedArticle}>
+                        <h2 class="slds-text-heading_medium" style="color: rgb(11, 11, 146);background-color: rgb(182, 189, 233)"><b>カテゴリー：</b>{selectedArticle.Category__c}</h2>
+                        <h2 class="slds-text-heading_medium"><b>{selectedArticle.Title__c}</b></h2>
+                        <lightning-formatted-rich-text value={selectedArticle.Content__c} class="slds-m-vertical_small"></lightning-formatted-rich-text>
+                        <div class="slds-m-top_medium slds-grid slds-align_absolute-center">
+                            <lightning-button variant="destructive" label="削除" data-id={selectedArticle.Id} onclick={handleDelete} class="slds-m-left_small"></lightning-button>
+                            <lightning-button variant="neutral" label="編集" onclick={handleEdit} class="slds-m-left_small"></lightning-button>
+
+                        </div>
+                    </template>
+                    <!-- Success Message Section -->
+                    <template if:true={showSuccessMessage}>
+                        <div class="slds-notify slds-notify_toast slds-theme_success" role="status">
+                            <span class="slds-assistive-text">成功</span>
+                            <div class="slds-notify__content">
+                                <h2 class="slds-text-heading_small">{successMessage}</h2>
+                            </div>
+                        </div>
+                    </template>
+                    
+                    <template if:true={isEditing}>
+                        <h2 class="slds-text-heading_medium">記事を編集</h2>
+                        <lightning-combobox
+                            label="カテゴリー"
+                            value={newArticle.Category__c}
+                            options={categoryOptions}
+                            onchange={handleNewCategoryChange}>
+                        </lightning-combobox>
+                        <lightning-input
+                            label="タイトル"
+                            value={newArticle.Title__c}
+                            onchange={handleNewTitleChange}>
+                        </lightning-input>
+                        <lightning-textarea
+                            label="内容"
+                            value={newArticle.Content__c}
+                            onchange={handleNewContentChange}
+                            variant="label-hidden"
+                            class="content-textarea">
+                        </lightning-textarea>
+                        <lightning-button variant="brand" label="変更を保存" onclick={handleUpdateArticle}></lightning-button>
+                    </template>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <!-- Apex Classes -->
+    <types>
+        <members>ArticleController</members>
+        <members>DashboardController</members>
+        <members>LoginController</members>
+        <name>ApexClass</name>
+    </types>
+
+    <!-- Lightning Web Components -->
+    <types>
+        <members>dashboard</members>
+        <members>home</members>
+        <members>loginPage</members>
+        <members>myArticles</members>
+        <members>otherArticles</members>
+        <members>siteHeader</members>
+        <name>LightningComponentBundle</name>
+    </types>
+
+    <!-- Experience Site -->
+    <types>
+        <members>MySalesforceApp</members>
+        <name>Network</name>
+    </types>
+
+    <!-- Site Metadata -->
+    <types>
+        <members>MySalesforceApp</members>
+        <name>CustomSite</name>
+    </types>
+
+    <version>60.0</version>
+</Package>

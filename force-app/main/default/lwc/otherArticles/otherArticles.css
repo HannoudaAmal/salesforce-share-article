@@ -1,0 +1,32 @@
+.filter-container {
+    margin-bottom: 1rem;
+}
+
+.popup {
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    max-width: 600px;
+    margin: 2rem auto;
+    position: relative;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-button {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.popup-body {
+    margin-top: 1rem;
+    white-space: pre-wrap;
+}

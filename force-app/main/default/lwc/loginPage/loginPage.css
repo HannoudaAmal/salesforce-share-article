@@ -1,0 +1,30 @@
+/* yourComponentName.css */
+
+:host {
+    display: block;
+    padding: 1rem;
+}
+
+.container {
+    max-width: 400px;
+    margin: 100px auto;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 2rem;
+}
+
+h2 {
+    font-weight: 600;
+    color: #16325c;
+}
+
+lightning-input {
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    color: #c23934;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}

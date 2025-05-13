@@ -1,0 +1,43 @@
+<template>
+    <lightning-card>
+        <div class="dashboard-container">
+            <div class="box">
+                <div class="box-title">総ユーザー数</div>
+                <div class="box-value">{totalUsers}</div>
+            </div>
+            <div class="box">
+                <div class="box-title">総記事数</div>
+                <div class="box-value">{totalArticles}</div>
+            </div>
+            <div class="box">
+                <div class="box-title">カテゴリ別記事</div>
+                <ul class="category-list">
+                    <template for:each={categoryList} for:item="item" for:index="index">
+                        <li key={item.name} class={item.rowClass}>
+                            {item.name} : {item.count}
+                        </li>
+                    </template>
+                </ul>
+            </div>
+            <div class="box">
+                <div class="box-title">トップ3ユーザー</div>
+                <table class="top-users">
+                    <thead>
+                        <tr>
+                            <th>ユーザー</th>
+                            <th>記事数</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={topUsers} for:item="user">
+                            <tr key={user.username}>
+                                <td>{user.username}</td>
+                                <td>{user.count}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </lightning-card>
+</template>
